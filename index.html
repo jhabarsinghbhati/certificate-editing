@@ -18,6 +18,8 @@
 
 		body{
 			height: 100vh;
+			margin: 0px;
+			padding: 0px;
 		}
 
 		.side-bar
@@ -62,14 +64,12 @@
 
 		.certificate-body{
 			width: 100%;
-			height: 110vh;;
 			background: pink;
 			text-align: center;
 		}
 
-		.certificate-body > iframe{
-			width: 800px;
-			height: 670px;
+		.certificate-body > img{
+			width: 880px;
 			position: absolute;
 			top:0px;
 			left:0px;
@@ -132,11 +132,11 @@
 
 			<!-- 111111111111111111111111111111111111111111111111111111111111111111 -->
 			<p>
-				<button class="btn btn-primary form-control mt-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+				<button class="btn btn-primary form-control mt-2" type="button" data-toggle="collapse" data-target="#caollapseExample" aria-expanded="false" aria-controls="collapseExample">
 				  Reference No
 				</button>
 			</p>
-			<div class="collapse ref-no-control " id="collapseExample">
+			<div class="collapse ref-no-control " id="caollapseExample">
 				<div class="card card-body">
 					<input type='text' placeholder='Ref No' class='form-control' id='ref-no'>
 					<button class='btn btn-danger my-2 create-ref-no'>+</button>
@@ -505,7 +505,11 @@
 				</div>
 			</div>
 
-
+			<div class='container mb-5'>
+				<button class='btn form-control btn-warning'>
+					Upload Certificate
+				</button>
+			</div>
 		</div>
 
 
@@ -515,7 +519,7 @@
 
 
 	<div class="certificate-body">
-		<iframe src='certificate.pdf'></iframe>
+		<img src='certificate.jpg'></img>
 	</div>
 	<div class='appender'>
 		
@@ -528,6 +532,9 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+	
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" type="text/javascript"></script>    
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"></script>
 	<script type="text/javascript">
 		
 		document.querySelector('.show-me').addEventListener('dblclick', () => {
@@ -535,7 +542,7 @@
 		})
 
 		document.querySelector('.upload-certificate').addEventListener('click', () => {
-			document.querySelector('.certificate-body > iframe ').setAttribute('src', 'certificate.pdf')
+			document.querySelector('.certificate-body > img ').setAttribute('src', 'certificate.jpg')
 		})
 
 
@@ -553,7 +560,12 @@
 				zIndex: '5',
 			})	
 
+			$('.ref-no').draggable();
+			
 		})	
+
+	
+
 		$('.ref-no-control .increase-size').click(() => {
 			var prevFontSize = $('.ref-no').css('fontSize');
 			console.log(prevFontSize)
@@ -633,6 +645,11 @@
 				left: '300px',
 				zIndex: '5',
 			})	
+
+			$('.intern-name').draggable();
+			// var yCoordicate = $('.intern-name').css('top');
+			// var xCoordicate = $('.intern-name').css('left');
+			
 
 		})	
 		$('.name-control .increase-size').click(() => {
@@ -715,6 +732,7 @@
 				left: '350px',
 				zIndex: '5',
 			})	
+			$('.internship-name').draggable();
 
 		})	
 		$('.internship-control .increase-size').click(() => {
@@ -796,6 +814,8 @@
 				left: '350px',
 				zIndex: '5',
 			})	
+
+			$('.from-name').draggable();
 
 		})	
 		$('.from-control .increase-size').click(() => {
@@ -883,6 +903,8 @@
 				zIndex: '5',
 			})	
 
+			$('.to-name').draggable();
+
 		})	
 		$('.to-control .increase-size').click(() => {
 			var prevFontSize = $('.to-name').css('fontSize');
@@ -966,6 +988,7 @@
 				zIndex: '5',
 			})	
 
+			$('.post-name').draggable();
 		})	
 		$('.post-control .increase-size').click(() => {
 			var prevFontSize = $('.post-name').css('fontSize');
@@ -1052,6 +1075,7 @@
 				zIndex: '5',
 			})	
 
+			$('.date-name').draggable();
 		})	
 		$('.date-control .increase-size').click(() => {
 			var prevFontSize = $('.date-name').css('fontSize');
@@ -1132,6 +1156,9 @@
 				width: '100px'
 			})	
 			$('.logo-invisibles').removeClass('invisible')
+
+
+			$('.internship-logo').draggable();
 
 		})
 
@@ -1224,6 +1251,7 @@
 			})	
 			$('.sign-logo-invisibles').removeClass('invisible')
 
+			$('.signature-logo').draggable();
 		})
 
 
@@ -1296,10 +1324,14 @@
 			$('.sign-logo-btn .x-coordinate-badge').text(+xCoordicate.slice(0, xCoordicate.length-2))
 		})
 
-
+		//, .ref-no .intern-name, .internship-name, .from-name, .to-name, .post-name , .date-name
+		// $("").click(()=>{
+		// 	alert(1)
+		// })
 
 
 
 	</script>
+
 </body>
 </html>
