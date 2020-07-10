@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Check</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<style type="text/css">
+
+
+		*,
+		*::before,
+		*::after
+		{
+			margin: 0px;
+			padding: 0px;
+			box-sizing: border-box;
+		}
+
+		body{
+			height: 100vh;
+		}
+
+		.side-bar
+		{
+			width: 400px;
+			height: 100vh;
+			background: indigo;
+			border: 1px solid lightgreen;
+			position: fixed;
+			z-index: 3;
+			top:0px;
+			right: 0px;
+			transition: 100ms linear;
+			overflow: scroll;
+		}
+
+		.side-bar-close
+		{
+			transform: translateX(400px);
+			height: 100vh;
+			background: indigo;
+			border: 1px solid lightgreen;
+			position: fixed;
+			z-index: 3;
+			transition: 100ms linear;
+		}
+
+		.side-bar > div.closed
+		{
+			position: absolute;
+			top: 0px;
+			background: indigo;
+			padding: 10px 15px;
+			right: -41px;
+			color: white;
+			font-family: ubuntu;
+			font-size: 20px;
+			font-weight: bolder;
+			cursor: pointer;
+			z-index: 6;
+		}
+
+		.certificate-body{
+			width: 100%;
+			height: 110vh;;
+			background: pink;
+			text-align: center;
+		}
+
+		.certificate-body > iframe{
+			width: 800px;
+			height: 670px;
+			position: absolute;
+			top:0px;
+			left:0px;
+		}
+	</style>
+</head>
+<body>
+	<div class='side-bar'>
+		<!-- <div class='closed'>
+			X
+		</div> -->
+
+
+		<!-- ################################################### -->
+
+		<div class='container'>
+			<div class="input-group mt-5">
+				<select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+				  <option selected>Upload Certificate</option>
+				  <option value="1">One</option>
+				  <option value="2">Two</option>
+				  <option value="3">Three</option>
+				</select>
+				<div class="input-group-append">
+				  <button class=" upload-certificate btn btn-outline-secondary text-light text-uppercase font-weight-bolder" type="button">upload</button>
+				</div>
+			</div>
+		</div>
+
+		<div class='container'>
+			<div class="input-group mt-2">
+				<select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+				  <option selected>Upload Logo</option>
+				  <option value="1">One</option>
+				  <option value="2">Two</option>
+				  <option value="3">Three</option>
+				</select>
+				<div class="input-group-append">
+				  <button class=" upload-logo btn btn-outline-secondary text-light text-uppercase font-weight-bolder" type="button">upload</button>
+				</div>
+			</div>
+		</div>
+
+		<div class='container'>
+			<div class="input-group mt-2">
+				<select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+				  <option selected>Upload Signature</option>
+				  <option value="1">One</option>
+				  <option value="2">Two</option>
+				  <option value="3">Three</option>
+				</select>
+				<div class="input-group-append">
+				  <button class=" upload-signature btn btn-outline-secondary text-light text-uppercase font-weight-bolder" type="button">upload</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- ################################################### -->
+		<div class='container mt-3'>
+
+			<!-- 111111111111111111111111111111111111111111111111111111111111111111 -->
+			<p>
+				<button class="btn btn-primary form-control mt-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+				  Reference No
+				</button>
+			</p>
+			<div class="collapse ref-no-control " id="collapseExample">
+				<div class="card card-body">
+					<input type='text' placeholder='Ref No' class='form-control' id='ref-no'>
+					<button class='btn btn-danger my-2 create-ref-no'>+</button>
+					<div class='my-3 mx-auto text-align-center'>
+						<h5 class='font-weight-bolder mx-auto text-center'>Font Size</h5>
+						<button class='btn btn-primary px-3 decrease-size'>-</button>
+						<button class='btn btn-primary px-3 increase-size'>+</button>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light font-size-badge">16</span>
+						</button>
+					</div>
+					<div class='mx-auto'>
+						<h5 class='text-center font-weight-bolder mx-auto'>Coordinates</h5>
+						<button class='btn btn-primary px-3 left'>&larr;</button>
+						<button class='btn btn-primary px-3 up '>&uarr;</button>
+						<button class='btn btn-primary px-3 down '>&darr;</button>
+						<button class='btn btn-primary px-3 right '>&rarr;</button>
+					</div>	
+					<div class='mt-3 text-center '>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light x-coordinate-badge">0</span>
+						</button>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light y-coordinate-badge">0</span>
+						</button>
+					</div>
+					
+				</div>
+			</div>
+			
+
+			<!-- 22222222222222222222222222222222222222222222222222222222  intern name -->
+			
+
+
+			
+			
+			<p>
+				<button class="btn btn-primary form-control mt-2" type="button" data-toggle="collapse" data-target="#collapseExamplename" aria-expanded="false" aria-controls="collapseExample">
+				  Intern Name
+				</button>
+			</p>
+			<div class="collapse name-control " id="collapseExamplename">
+				<div class="card card-body">
+					<input type='text' placeholder='Intern Name' class='form-control' id='ref-no'>
+					<button class='btn btn-danger my-2 create-intern-name'>+</button>
+					<div class='my-3 mx-auto text-align-center'>
+						<h5 class='font-weight-bolder mx-auto text-center'>Font Size</h5>
+						<button class='btn btn-primary px-3 decrease-size'>-</button>
+						<button class='btn btn-primary px-3 increase-size'>+</button>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light font-size-badge">16</span>
+						</button>
+					</div>
+					<div class='mx-auto'>
+						<h5 class='text-center font-weight-bolder mx-auto'>Coordinates</h5>
+						<button class='btn btn-primary px-3 left'>&larr;</button>
+						<button class='btn btn-primary px-3 up '>&uarr;</button>
+						<button class='btn btn-primary px-3 down '>&darr;</button>
+						<button class='btn btn-primary px-3 right '>&rarr;</button>
+					</div>	
+					<div class='mt-3 text-center '>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light x-coordinate-badge">0</span>
+						</button>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light y-coordinate-badge">0</span>
+						</button>
+					</div>
+					
+				</div>
+			</div>
+			
+			
+
+
+			<!-- internship name  -->
+			
+
+
+			<p>
+				<button class="btn btn-primary form-control mt-2" type="button" data-toggle="collapse" data-target="#collapseExample12" aria-expanded="false" aria-controls="collapseExample">
+				  Internship Name
+				</button>
+			</p>
+			<div class="collapse internship-control " id="collapseExample12">
+				<div class="card card-body">
+					<input type='text' placeholder='Internship Name' class='form-control' id='ref-no'>
+					<button class='btn btn-danger my-2 create-internship-name'>+</button>
+					<div class='my-3 mx-auto text-align-center'>
+						<h5 class='font-weight-bolder mx-auto text-center'>Font Size</h5>
+						<button class='btn btn-primary px-3 decrease-size'>-</button>
+						<button class='btn btn-primary px-3 increase-size'>+</button>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light font-size-badge">16</span>
+						</button>
+					</div>
+					<div class='mx-auto'>
+						<h5 class='text-center font-weight-bolder mx-auto'>Coordinates</h5>
+						<button class='btn btn-primary px-3 left'>&larr;</button>
+						<button class='btn btn-primary px-3 up '>&uarr;</button>
+						<button class='btn btn-primary px-3 down '>&darr;</button>
+						<button class='btn btn-primary px-3 right '>&rarr;</button>
+					</div>	
+					<div class='mt-3 text-center '>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light x-coordinate-badge">0</span>
+						</button>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light y-coordinate-badge">0</span>
+						</button>
+					</div>
+					
+				</div>
+			</div>
+
+
+
+
+			
+			
+			
+			<!-- from  -->
+			
+
+			<p>
+				<button class="btn btn-primary form-control mt-2" type="button" data-toggle="collapse" data-target="#collapseExamplefrom" aria-expanded="false" aria-controls="collapseExample">
+				  Starting Date
+				</button>
+			</p>
+			<div class="collapse from-control " id="collapseExamplefrom">
+				<div class="card card-body">
+					<input type='text' placeholder='Starting Date' class='form-control' id='ref-no'>
+					<button class='btn btn-danger my-2 create-from'>+</button>
+					<div class='my-3 mx-auto text-align-center'>
+						<h5 class='font-weight-bolder mx-auto text-center'>Font Size</h5>
+						<button class='btn btn-primary px-3 decrease-size'>-</button>
+						<button class='btn btn-primary px-3 increase-size'>+</button>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light font-size-badge">16</span>
+						</button>
+					</div>
+					<div class='mx-auto'>
+						<h5 class='text-center font-weight-bolder mx-auto'>Coordinates</h5>
+						<button class='btn btn-primary px-3 left'>&larr;</button>
+						<button class='btn btn-primary px-3 up '>&uarr;</button>
+						<button class='btn btn-primary px-3 down '>&darr;</button>
+						<button class='btn btn-primary px-3 right '>&rarr;</button>
+					</div>	
+					<div class='mt-3 text-center '>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light x-coordinate-badge">0</span>
+						</button>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light y-coordinate-badge">0</span>
+						</button>
+					</div>
+					
+				</div>
+			</div>
+
+
+
+
+			<!-- to -->
+			
+
+			<p>
+				<button class="btn btn-primary form-control mt-2" type="button" data-toggle="collapse" data-target="#tocollapseExample" aria-expanded="false" aria-controls="collapseExample">
+				  Ending Date
+				</button>
+			</p>
+			<div class="collapse to-control " id="tocollapseExample">
+				<div class="card card-body">
+					<input type='text' placeholder='Ending Date' class='form-control' id='ref-no'>
+					<button class='btn btn-danger my-2 create-to'>+</button>
+					<div class='my-3 mx-auto text-align-center'>
+						<h5 class='font-weight-bolder mx-auto text-center'>Font Size</h5>
+						<button class='btn btn-primary px-3 decrease-size'>-</button>
+						<button class='btn btn-primary px-3 increase-size'>+</button>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light font-size-badge">16</span>
+						</button>
+					</div>
+					<div class='mx-auto'>
+						<h5 class='text-center font-weight-bolder mx-auto'>Coordinates</h5>
+						<button class='btn btn-primary px-3 left'>&larr;</button>
+						<button class='btn btn-primary px-3 up '>&uarr;</button>
+						<button class='btn btn-primary px-3 down '>&darr;</button>
+						<button class='btn btn-primary px-3 right '>&rarr;</button>
+					</div>	
+					<div class='mt-3 text-center '>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light x-coordinate-badge">0</span>
+						</button>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light y-coordinate-badge">0</span>
+						</button>
+					</div>
+					
+				</div>
+			</div>
+			
+			
+			
+			
+			
+			
+			<!-- post -->
+			
+
+			<p>
+				<button class="btn btn-primary form-control mt-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+				  Designation
+				</button>
+			</p>
+			<div class="collapse post-control " id="collapseExample">
+				<div class="card card-body">
+					<input type='text' placeholder='Designation' class='form-control' id='ref-no'>
+					<button class='btn btn-danger my-2 create-post'>+</button>
+					<div class='my-3 mx-auto text-align-center'>
+						<h5 class='font-weight-bolder mx-auto text-center'>Font Size</h5>
+						<button class='btn btn-primary px-3 decrease-size'>-</button>
+						<button class='btn btn-primary px-3 increase-size'>+</button>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light font-size-badge">16</span>
+						</button>
+					</div>
+					<div class='mx-auto'>
+						<h5 class='text-center font-weight-bolder mx-auto'>Coordinates</h5>
+						<button class='btn btn-primary px-3 left'>&larr;</button>
+						<button class='btn btn-primary px-3 up '>&uarr;</button>
+						<button class='btn btn-primary px-3 down '>&darr;</button>
+						<button class='btn btn-primary px-3 right '>&rarr;</button>
+					</div>	
+					<div class='mt-3 text-center '>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light x-coordinate-badge">0</span>
+						</button>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light y-coordinate-badge">0</span>
+						</button>
+					</div>
+					
+				</div>
+			</div>
+
+
+			<!-- date  -->
+			
+
+			<p>
+				<button class="btn btn-primary form-control mt-2" type="button" data-toggle="collapse" data-target="#dacollapseExample" aria-expanded="false" aria-controls="collapseExample">
+				  Date
+				</button>
+			</p>
+			<div class="collapse date-control " id="dacollapseExample">
+				<div class="card card-body">
+					<input type='text' placeholder='Date' class='form-control' id='ref-no'>
+					<button class='btn btn-danger my-2 create-date'>+</button>
+					<div class='my-3 mx-auto text-align-center'>
+						<h5 class='font-weight-bolder mx-auto text-center'>Font Size</h5>
+						<button class='btn btn-primary px-3 decrease-size'>-</button>
+						<button class='btn btn-primary px-3 increase-size'>+</button>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light font-size-badge">16</span>
+						</button>
+					</div>
+					<div class='mx-auto'>
+						<h5 class='text-center font-weight-bolder mx-auto'>Coordinates</h5>
+						<button class='btn btn-primary px-3 left'>&larr;</button>
+						<button class='btn btn-primary px-3 up '>&uarr;</button>
+						<button class='btn btn-primary px-3 down '>&darr;</button>
+						<button class='btn btn-primary px-3 right '>&rarr;</button>
+					</div>	
+					<div class='mt-3 text-center '>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light x-coordinate-badge">0</span>
+						</button>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light y-coordinate-badge">0</span>
+						</button>
+					</div>
+					
+				</div>
+			</div>
+			
+			
+			
+			<!-- /////Last -->
+			
+			<p>
+
+				<button class="btn btn-primary form-control mt-1 invisible logo-invisibles" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+				  Logo 
+				</button>
+			</p>
+			<div class="collapse logo-btn" id="collapseExample1">
+				<div class="card card-body">
+					
+					<div class='my-3 mx-auto text-align-center'>
+						<h5 class='font-weight-bolder mx-auto text-center'>Image Size</h5>
+						<button class='btn btn-primary px-3 decrease-size'>-</button>
+						<button class='btn btn-primary px-3 increase-size'>+</button>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light font-size-badge">16</span>
+						</button>
+					</div>
+					<div class='mx-auto'>
+						<h5 class='text-center font-weight-bolder mx-auto'>Coordinates</h5>
+						<button class='btn btn-primary px-3 left'>&larr;</button>
+						<button class='btn btn-primary px-3 up '>&uarr;</button>
+						<button class='btn btn-primary px-3 down '>&darr;</button>
+						<button class='btn btn-primary px-3 right '>&rarr;</button>
+					</div>	
+					<div class='mt-3 text-center '>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light x-coordinate-badge">0</span>
+						</button>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light y-coordinate-badge">0</span>
+						</button>
+					</div>
+					
+				</div>
+			</div>
+
+
+
+			<!-- /  sign -->
+
+
+			<p>
+
+				<button class="btn btn-primary form-control mt-1 invisible sign-logo-invisibles" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
+				 Signature 
+				</button>
+			</p>
+			<div class="collapse sign-logo-btn" id="collapseExample3">
+				<div class="card card-body">
+					
+					<div class='my-3 mx-auto text-align-center'>
+						<h5 class='font-weight-bolder mx-auto text-center'>Image Size</h5>
+						<button class='btn btn-primary px-3 decrease-size'>-</button>
+						<button class='btn btn-primary px-3 increase-size'>+</button>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light font-size-badge">16</span>
+						</button>
+					</div>
+					<div class='mx-auto'>
+						<h5 class='text-center font-weight-bolder mx-auto'>Coordinates</h5>
+						<button class='btn btn-primary px-3 left'>&larr;</button>
+						<button class='btn btn-primary px-3 up '>&uarr;</button>
+						<button class='btn btn-primary px-3 down '>&darr;</button>
+						<button class='btn btn-primary px-3 right '>&rarr;</button>
+					</div>	
+					<div class='mt-3 text-center '>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light x-coordinate-badge">0</span>
+						</button>
+						<button type="button" class="btn btn-primary">
+							<span class="badge badge-light y-coordinate-badge">0</span>
+						</button>
+					</div>
+					
+				</div>
+			</div>
+
+
+		</div>
+
+
+	</div>
+	
+
+
+
+	<div class="certificate-body">
+		<iframe src='certificate.pdf'></iframe>
+	</div>
+	<div class='appender'>
+		
+	</div>
+	<button class='show-me btn btn-danger font-weight:bolder' style='position: fixed; top:10px; left: 1	0px;border-radius: 20px;'>
+			X
+	</button>
+
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		
+		document.querySelector('.show-me').addEventListener('dblclick', () => {
+			document.querySelector('.side-bar').classList.toggle('side-bar-close')
+		})
+
+		document.querySelector('.upload-certificate').addEventListener('click', () => {
+			document.querySelector('.certificate-body > iframe ').setAttribute('src', 'certificate.pdf')
+		})
+
+
+		$('.create-ref-no').click(()=> {
+			const value = $('[placeholder="Ref No"]').val()
+			var element = document.createElement("span")
+			element.setAttribute('class', 'ref-no')
+			element.innerText = value
+			document.querySelector('.appender').appendChild(element)
+			console.log(element)
+			$('.ref-no').css({
+				position: 'absolute',
+				top: '100px',
+				left: '600px',
+				zIndex: '5',
+			})	
+
+		})	
+		$('.ref-no-control .increase-size').click(() => {
+			var prevFontSize = $('.ref-no').css('fontSize');
+			console.log(prevFontSize)
+			$('.ref-no').css({
+				fontSize: (+prevFontSize.slice(0, prevFontSize.length-2)+ 2) + 'px' 
+			})
+			prevFontSize = $('.ref-no').css('fontSize');
+			$('.ref-no-control .font-size-badge').text(+prevFontSize.slice(0, prevFontSize.length-2))
+		})
+
+		$('.ref-no-control .decrease-size').click(() => {
+			var prevFontSize = $('.ref-no').css('fontSize');
+			console.log(prevFontSize)
+			$('.ref-no').css({
+				fontSize: (+prevFontSize.slice(0, prevFontSize.length-2) - 2) + 'px' 
+			})
+			prevFontSize = $('.ref-no').css('fontSize');
+			$('.ref-no-control .font-size-badge').text(+prevFontSize.slice(0, prevFontSize.length-2))
+		})
+
+
+
+		$('.ref-no-control .up').click(() => {
+			var yCoordicate = $('.ref-no').css('top');
+			
+			$('.ref-no').css({
+				top: (+yCoordicate.slice(0, yCoordicate.length-2) - 2) + 'px' 
+			})
+			yCoordicate = $('.ref-no').css('top');
+			$('.ref-no-control .y-coordinate-badge').text(+yCoordicate.slice(0, yCoordicate.length-2))
+		})
+
+		$('.ref-no-control .down').click(() => {
+			var yCoordicate = $('.ref-no').css('top');
+			
+			$('.ref-no').css({
+				top: (+yCoordicate.slice(0, yCoordicate.length-2) + 2) + 'px' 
+			})
+			yCoordicate = $('.ref-no').css('top');
+			$(' .ref-no-control .y-coordinate-badge').text(+yCoordicate.slice(0, yCoordicate.length-2))
+		})
+
+		$('.ref-no-control .left').click(() => {
+			var xCoordicate = $('.ref-no').css('left');
+			
+			$('.ref-no').css({
+				left: (+xCoordicate.slice(0, xCoordicate.length-2) - 2) + 'px' 
+			})
+			xCoordicate = $('.ref-no').css('left');
+			$('.ref-no-control .x-coordinate-badge').text(+xCoordicate.slice(0, xCoordicate.length-2))
+		})
+
+		$('.ref-no-control .right').click(() => {
+			var xCoordicate = $('.ref-no').css('left');
+			
+			$('.ref-no').css({
+				left: (+xCoordicate.slice(0, xCoordicate.length-2) + 2) + 'px' 
+			})
+			xCoordicate = $('.ref-no').css('left');
+			$('.ref-no-control .x-coordinate-badge').text(+xCoordicate.slice(0, xCoordicate.length-2))
+		})
+
+
+
+		///// Intern Name
+
+		$('.create-intern-name').click(()=> {
+			const value = $('[placeholder="Intern Name"]').val()
+			var element = document.createElement("span")
+			element.setAttribute('class', 'intern-name')
+			element.innerText = value
+			document.querySelector('.appender').appendChild(element)
+			console.log(element)
+			$('.intern-name').css({
+				position: 'absolute',
+				top: '350px',
+				left: '300px',
+				zIndex: '5',
+			})	
+
+		})	
+		$('.name-control .increase-size').click(() => {
+			var prevFontSize = $('.intern-name').css('fontSize');
+			console.log(prevFontSize)
+			$('.intern-name').css({
+				fontSize: (+prevFontSize.slice(0, prevFontSize.length-2)+ 2) + 'px' 
+			})
+			prevFontSize = $('.intern-name').css('fontSize');
+			$('.name-control .font-size-badge').text(+prevFontSize.slice(0, prevFontSize.length-2))
+		})
+
+		$('.name-control .decrease-size').click(() => {
+			var prevFontSize = $('.intern-name').css('fontSize');
+			console.log(prevFontSize)
+			$('.intern-name').css({
+				fontSize: (+prevFontSize.slice(0, prevFontSize.length-2) - 2) + 'px' 
+			})
+			prevFontSize = $('.intern-name').css('fontSize');
+			$('.name-control .font-size-badge').text(+prevFontSize.slice(0, prevFontSize.length-2))
+		})
+
+
+
+		$('.name-control .up').click(() => {
+			var yCoordicate = $('.intern-name').css('top');
+			
+			$('.intern-name').css({
+				top: (+yCoordicate.slice(0, yCoordicate.length-2) - 2) + 'px' 
+			})
+			yCoordicate = $('.intern-name').css('top');
+			$('.name-control .y-coordinate-badge').text(+yCoordicate.slice(0, yCoordicate.length-2))
+		})
+
+		$('.name-control .down').click(() => {
+			var yCoordicate = $('.intern-name').css('top');
+			
+			$('.intern-name').css({
+				top: (+yCoordicate.slice(0, yCoordicate.length-2) + 2) + 'px' 
+			})
+			yCoordicate = $('.intern-name').css('top');
+			$(' .name-control .y-coordinate-badge').text(+yCoordicate.slice(0, yCoordicate.length-2))
+		})
+
+		$('.name-control .left').click(() => {
+			var xCoordicate = $('.intern-name').css('left');
+			
+			$('.intern-name').css({
+				left: (+xCoordicate.slice(0, xCoordicate.length-2) - 2) + 'px' 
+			})
+			xCoordicate = $('.intern-name').css('left');
+			$('.name-control .x-coordinate-badge').text(+xCoordicate.slice(0, xCoordicate.length-2))
+		})
+
+		$('.name-control .right').click(() => {
+			var xCoordicate = $('.intern-name').css('left');
+			
+			$('.intern-name').css({
+				left: (+xCoordicate.slice(0, xCoordicate.length-2) + 2) + 'px' 
+			})
+			xCoordicate = $('.intern-name').css('left');
+			$('.name-control .x-coordinate-badge').text(+xCoordicate.slice(0, xCoordicate.length-2))
+		})
+
+
+
+		// internship name
+
+
+		$('.create-internship-name').click(()=> {
+			const value = $('[placeholder="Internship Name"]').val()
+			var element = document.createElement("span")
+			element.setAttribute('class', 'internship-name')
+			element.innerText = value
+			document.querySelector('.appender').appendChild(element)
+			console.log(element)
+			$('.internship-name').css({
+				position: 'absolute',
+				top: '350px',
+				left: '350px',
+				zIndex: '5',
+			})	
+
+		})	
+		$('.internship-control .increase-size').click(() => {
+			var prevFontSize = $('.internship-name').css('fontSize');
+			console.log(prevFontSize)
+			$('.internship-name').css({
+				fontSize: (+prevFontSize.slice(0, prevFontSize.length-2)+ 2) + 'px' 
+			})
+			prevFontSize = $('.internship-name').css('fontSize');
+			$('.internship-control .font-size-badge').text(+prevFontSize.slice(0, prevFontSize.length-2))
+		})
+
+		$('.internship-control .decrease-size').click(() => {
+			var prevFontSize = $('.internship-name').css('fontSize');
+			console.log(prevFontSize)
+			$('.internship-name').css({
+				fontSize: (+prevFontSize.slice(0, prevFontSize.length-2) - 2) + 'px' 
+			})
+			prevFontSize = $('.internship-name').css('fontSize');
+			$('.internship-control .font-size-badge').text(+prevFontSize.slice(0, prevFontSize.length-2))
+		})
+
+
+
+		$('.internship-control .up').click(() => {
+			var yCoordicate = $('.internship-name').css('top');
+			
+			$('.internship-name').css({
+				top: (+yCoordicate.slice(0, yCoordicate.length-2) - 2) + 'px' 
+			})
+			yCoordicate = $('.internship-name').css('top');
+			$('.internship-control .y-coordinate-badge').text(+yCoordicate.slice(0, yCoordicate.length-2))
+		})
+
+		$('.internship-control .down').click(() => {
+			var yCoordicate = $('.internship-name').css('top');
+			
+			$('.internship-name').css({
+				top: (+yCoordicate.slice(0, yCoordicate.length-2) + 2) + 'px' 
+			})
+			yCoordicate = $('.internship-name').css('top');
+			$(' .internship-control .y-coordinate-badge').text(+yCoordicate.slice(0, yCoordicate.length-2))
+		})
+
+		$('.internship-control .left').click(() => {
+			var xCoordicate = $('.internship-name').css('left');
+			
+			$('.internship-name').css({
+				left: (+xCoordicate.slice(0, xCoordicate.length-2) - 2) + 'px' 
+			})
+			xCoordicate = $('.internship-name').css('left');
+			$('.internship-control .x-coordinate-badge').text(+xCoordicate.slice(0, xCoordicate.length-2))
+		})
+
+		$('.internship-control .right').click(() => {
+			var xCoordicate = $('.internship-name').css('left');
+			
+			$('.internship-name').css({
+				left: (+xCoordicate.slice(0, xCoordicate.length-2) + 2) + 'px' 
+			})
+			xCoordicate = $('.internship-name').css('left');
+			$('.internship-control .x-coordinate-badge').text(+xCoordicate.slice(0, xCoordicate.length-2))
+		})
+
+
+
+		//////////// from 
+
+		$('.create-from').click(()=> {
+			const value = $('[placeholder="Starting Date"]').val()
+			var element = document.createElement("span")
+			element.setAttribute('class', 'from-name')
+			element.innerText = value
+			document.querySelector('.appender').appendChild(element)
+			console.log(element)
+			$('.from-name').css({
+				position: 'absolute',
+				top: '390px',
+				left: '350px',
+				zIndex: '5',
+			})	
+
+		})	
+		$('.from-control .increase-size').click(() => {
+			var prevFontSize = $('.from-name').css('fontSize');
+			console.log(prevFontSize)
+			$('.from-name').css({
+				fontSize: (+prevFontSize.slice(0, prevFontSize.length-2)+ 2) + 'px' 
+			})
+			prevFontSize = $('.from-name').css('fontSize');
+			$('.from-control .font-size-badge').text(+prevFontSize.slice(0, prevFontSize.length-2))
+		})
+
+		$('.from-control .decrease-size').click(() => {
+			var prevFontSize = $('.from-name').css('fontSize');
+			console.log(prevFontSize)
+			$('.from-name').css({
+				fontSize: (+prevFontSize.slice(0, prevFontSize.length-2) - 2) + 'px' 
+			})
+			prevFontSize = $('.from-name').css('fontSize');
+			$('.from-control .font-size-badge').text(+prevFontSize.slice(0, prevFontSize.length-2))
+		})
+
+
+
+		$('.from-control .up').click(() => {
+			var yCoordicate = $('.from-name').css('top');
+			
+			$('.from-name').css({
+				top: (+yCoordicate.slice(0, yCoordicate.length-2) - 2) + 'px' 
+			})
+			yCoordicate = $('.from-name').css('top');
+			$('.from-control .y-coordinate-badge').text(+yCoordicate.slice(0, yCoordicate.length-2))
+		})
+
+		$('.from-control .down').click(() => {
+			var yCoordicate = $('.from-name').css('top');
+			
+			$('.from-name').css({
+				top: (+yCoordicate.slice(0, yCoordicate.length-2) + 2) + 'px' 
+			})
+			yCoordicate = $('.from-name').css('top');
+			$(' .from-control .y-coordinate-badge').text(+yCoordicate.slice(0, yCoordicate.length-2))
+		})
+
+		$('.from-control .left').click(() => {
+			var xCoordicate = $('.from-name').css('left');
+			
+			$('.from-name').css({
+				left: (+xCoordicate.slice(0, xCoordicate.length-2) - 2) + 'px' 
+			})
+			xCoordicate = $('.from-name').css('left');
+			$('.from-control .x-coordinate-badge').text(+xCoordicate.slice(0, xCoordicate.length-2))
+		})
+
+		$('.from-control .right').click(() => {
+			var xCoordicate = $('.from-name').css('left');
+			
+			$('.from-name').css({
+				left: (+xCoordicate.slice(0, xCoordicate.length-2) + 2) + 'px' 
+			})
+			xCoordicate = $('.from-name').css('left');
+			$('.from-control .x-coordinate-badge').text(+xCoordicate.slice(0, xCoordicate.length-2))
+		})
+
+
+
+	///// to
+
+
+
+
+
+
+	$('.create-to').click(()=> {
+			const value = $('[placeholder="Ending Date"]').val()
+			var element = document.createElement("span")
+			element.setAttribute('class', 'to-name')
+			element.innerText = value
+			document.querySelector('.appender').appendChild(element)
+			console.log(element)
+			$('.to-name').css({
+				position: 'absolute',
+				top: '390px',
+				left: '450px',
+				zIndex: '5',
+			})	
+
+		})	
+		$('.to-control .increase-size').click(() => {
+			var prevFontSize = $('.to-name').css('fontSize');
+			console.log(prevFontSize)
+			$('.to-name').css({
+				fontSize: (+prevFontSize.slice(0, prevFontSize.length-2)+ 2) + 'px' 
+			})
+			prevFontSize = $('.to-name').css('fontSize');
+			$('.to-control .font-size-badge').text(+prevFontSize.slice(0, prevFontSize.length-2))
+		})
+
+		$('.to-control .decrease-size').click(() => {
+			var prevFontSize = $('.to-name').css('fontSize');
+			console.log(prevFontSize)
+			$('.to-name').css({
+				fontSize: (+prevFontSize.slice(0, prevFontSize.length-2) - 2) + 'px' 
+			})
+			prevFontSize = $('.to-name').css('fontSize');
+			$('.to-control .font-size-badge').text(+prevFontSize.slice(0, prevFontSize.length-2))
+		})
+
+
+
+		$('.to-control .up').click(() => {
+			var yCoordicate = $('.to-name').css('top');
+			
+			$('.to-name').css({
+				top: (+yCoordicate.slice(0, yCoordicate.length-2) - 2) + 'px' 
+			})
+			yCoordicate = $('.to-name').css('top');
+			$('.to-control .y-coordinate-badge').text(+yCoordicate.slice(0, yCoordicate.length-2))
+		})
+
+		$('.to-control .down').click(() => {
+			var yCoordicate = $('.to-name').css('top');
+			
+			$('.to-name').css({
+				top: (+yCoordicate.slice(0, yCoordicate.length-2) + 2) + 'px' 
+			})
+			yCoordicate = $('.to-name').css('top');
+			$(' .to-control .y-coordinate-badge').text(+yCoordicate.slice(0, yCoordicate.length-2))
+		})
+
+		$('.to-control .left').click(() => {
+			var xCoordicate = $('.to-name').css('left');
+			
+			$('.to-name').css({
+				left: (+xCoordicate.slice(0, xCoordicate.length-2) - 2) + 'px' 
+			})
+			xCoordicate = $('.to-name').css('left');
+			$('.to-control .x-coordinate-badge').text(+xCoordicate.slice(0, xCoordicate.length-2))
+		})
+
+		$('.to-control .right').click(() => {
+			var xCoordicate = $('.to-name').css('left');
+			
+			$('.to-name').css({
+				left: (+xCoordicate.slice(0, xCoordicate.length-2) + 2) + 'px' 
+			})
+			xCoordicate = $('.to-name').css('left');
+			$('.to-control .x-coordinate-badge').text(+xCoordicate.slice(0, xCoordicate.length-2))
+		})
+
+
+
+
+		//// post
+
+
+		$('.create-post').click(()=> {
+			const value = $('[placeholder="Designation"]').val()
+			var element = document.createElement("span")
+			element.setAttribute('class', 'post-name')
+			element.innerText = value
+			document.querySelector('.appender').appendChild(element)
+			console.log(element)
+			$('.post-name').css({
+				position: 'absolute',
+				top: '420px',
+				left: '280px',
+				zIndex: '5',
+			})	
+
+		})	
+		$('.post-control .increase-size').click(() => {
+			var prevFontSize = $('.post-name').css('fontSize');
+			console.log(prevFontSize)
+			$('.post-name').css({
+				fontSize: (+prevFontSize.slice(0, prevFontSize.length-2)+ 2) + 'px' 
+			})
+			prevFontSize = $('.post-name').css('fontSize');
+			$('.post-control .font-size-badge').text(+prevFontSize.slice(0, prevFontSize.length-2))
+		})
+
+		$('.post-control .decrease-size').click(() => {
+			var prevFontSize = $('.post-name').css('fontSize');
+			console.log(prevFontSize)
+			$('.post-name').css({
+				fontSize: (+prevFontSize.slice(0, prevFontSize.length-2) - 2) + 'px' 
+			})
+			prevFontSize = $('.post-name').css('fontSize');
+			$('.post-control .font-size-badge').text(+prevFontSize.slice(0, prevFontSize.length-2))
+		})
+
+
+
+		$('.post-control .up').click(() => {
+			var yCoordicate = $('.post-name').css('top');
+			
+			$('.post-name').css({
+				top: (+yCoordicate.slice(0, yCoordicate.length-2) - 2) + 'px' 
+			})
+			yCoordicate = $('.post-name').css('top');
+			$('.post-control .y-coordinate-badge').text(+yCoordicate.slice(0, yCoordicate.length-2))
+		})
+
+		$('.post-control .down').click(() => {
+			var yCoordicate = $('.post-name').css('top');
+			
+			$('.post-name').css({
+				top: (+yCoordicate.slice(0, yCoordicate.length-2) + 2) + 'px' 
+			})
+			yCoordicate = $('.post-name').css('top');
+			$(' .post-control .y-coordinate-badge').text(+yCoordicate.slice(0, yCoordicate.length-2))
+		})
+
+		$('.post-control .left').click(() => {
+			var xCoordicate = $('.post-name').css('left');
+			
+			$('.post-name').css({
+				left: (+xCoordicate.slice(0, xCoordicate.length-2) - 2) + 'px' 
+			})
+			xCoordicate = $('.post-name').css('left');
+			$('.post-control .x-coordinate-badge').text(+xCoordicate.slice(0, xCoordicate.length-2))
+		})
+
+		$('.post-control .right').click(() => {
+			var xCoordicate = $('.post-name').css('left');
+			
+			$('.post-name').css({
+				left: (+xCoordicate.slice(0, xCoordicate.length-2) + 2) + 'px' 
+			})
+			xCoordicate = $('.post-name').css('left');
+			$('.post-control .x-coordinate-badge').text(+xCoordicate.slice(0, xCoordicate.length-2))
+		})
+
+
+
+
+
+		//// date
+
+
+
+
+		$('.create-date').click(()=> {
+			const value = $('[placeholder="Date"]').val()
+			var element = document.createElement("span")
+			element.setAttribute('class', 'date-name')
+			element.innerText = value
+			document.querySelector('.appender').appendChild(element)
+			console.log(element)
+			$('.date-name').css({
+				position: 'absolute',
+				top: '330px',
+				left: '100px',
+				zIndex: '5',
+			})	
+
+		})	
+		$('.date-control .increase-size').click(() => {
+			var prevFontSize = $('.date-name').css('fontSize');
+			console.log(prevFontSize)
+			$('.date-name').css({
+				fontSize: (+prevFontSize.slice(0, prevFontSize.length-2)+ 2) + 'px' 
+			})
+			prevFontSize = $('.date-name').css('fontSize');
+			$('.date-control .font-size-badge').text(+prevFontSize.slice(0, prevFontSize.length-2))
+		})
+
+		$('.date-control .decrease-size').click(() => {
+			var prevFontSize = $('.date-name').css('fontSize');
+			console.log(prevFontSize)
+			$('.date-name').css({
+				fontSize: (+prevFontSize.slice(0, prevFontSize.length-2) - 2) + 'px' 
+			})
+			prevFontSize = $('.date-name').css('fontSize');
+			$('.date-control .font-size-badge').text(+prevFontSize.slice(0, prevFontSize.length-2))
+		})
+
+
+
+		$('.date-control .up').click(() => {
+			var yCoordicate = $('.date-name').css('top');
+			
+			$('.date-name').css({
+				top: (+yCoordicate.slice(0, yCoordicate.length-2) - 2) + 'px' 
+			})
+			yCoordicate = $('.date-name').css('top');
+			$('.date-control .y-coordinate-badge').text(+yCoordicate.slice(0, yCoordicate.length-2))
+		})
+
+		$('.date-control .down').click(() => {
+			var yCoordicate = $('.date-name').css('top');
+			
+			$('.date-name').css({
+				top: (+yCoordicate.slice(0, yCoordicate.length-2) + 2) + 'px' 
+			})
+			yCoordicate = $('.date-name').css('top');
+			$(' .date-control .y-coordinate-badge').text(+yCoordicate.slice(0, yCoordicate.length-2))
+		})
+
+		$('.date-control .left').click(() => {
+			var xCoordicate = $('.date-name').css('left');
+			
+			$('.date-name').css({
+				left: (+xCoordicate.slice(0, xCoordicate.length-2) - 2) + 'px' 
+			})
+			xCoordicate = $('.date-name').css('left');
+			$('.date-control .x-coordinate-badge').text(+xCoordicate.slice(0, xCoordicate.length-2))
+		})
+
+		$('.date-control .right').click(() => {
+			var xCoordicate = $('.date-name').css('left');
+			
+			$('.date-name').css({
+				left: (+xCoordicate.slice(0, xCoordicate.length-2) + 2) + 'px' 
+			})
+			xCoordicate = $('.date-name').css('left');
+			$('.date-control .x-coordinate-badge').text(+xCoordicate.slice(0, xCoordicate.length-2))
+		})
+
+
+
+
+		$('.upload-logo').click(()=>{
+			var element = document.createElement('img')
+			element.setAttribute('class', 'internship-logo')
+			element.setAttribute('src', 'logo.png')
+			document.querySelector('.appender').appendChild(element)
+			console.log(element)
+			$('.internship-logo').css({
+				position: 'absolute',
+				top: '520px',
+				left: '600px',
+				zIndex: '7',
+				width: '100px'
+			})	
+			$('.logo-invisibles').removeClass('invisible')
+
+		})
+
+
+		//////logo 
+
+
+
+
+		$('.logo-btn .increase-size').click(() => {
+			console.log($('.internship-logo'))
+			var preWidth = $('.internship-logo').css('width');
+			console.log(preWidth)
+			$('.internship-logo').css({
+				width: (+preWidth.slice(0, preWidth.length-2)+ 2) + 'px' 
+			})
+			preWidth = $('.internship-logo').css('width');
+			$('.logo-btn .font-size-badge').text(+preWidth.slice(0, preWidth.length-2))
+		})
+
+		$('.logo-btn .decrease-size').click(() => {
+			var preWidth = $('.internship-logo').css('width');
+			console.log(preWidth)
+			$('.internship-logo').css({
+				width: (+preWidth.slice(0, preWidth.length-2) - 2) + 'px' 
+			})
+			preWidth = $('.internship-logo').css('width');
+			$('.logo-btn .font-size-badge').text(+preWidth.slice(0, preWidth.length-2))
+		})
+
+
+
+		$('.logo-btn .up').click(() => {
+			var yCoordicate = $('.internship-logo').css('top');
+			
+			$('.internship-logo').css({
+				top: (+yCoordicate.slice(0, yCoordicate.length-2) - 2) + 'px' 
+			})
+			yCoordicate = $('.internship-logo').css('top');
+			$('.logo-btn .y-coordinate-badge').text(+yCoordicate.slice(0, yCoordicate.length-2))
+		})
+
+		$('.logo-btn .down').click(() => {
+			var yCoordicate = $('.internship-logo').css('top');
+			
+			$('.internship-logo').css({
+				top: (+yCoordicate.slice(0, yCoordicate.length-2) + 2) + 'px' 
+			})
+			yCoordicate = $('.internship-logo').css('top');
+			$('.logo-btn .y-coordinate-badge').text(+yCoordicate.slice(0, yCoordicate.length-2))
+		})
+
+		$('.logo-btn .left').click(() => {
+			var xCoordicate = $('.internship-logo').css('left');
+			
+			$('.internship-logo').css({
+				left: (+xCoordicate.slice(0, xCoordicate.length-2) - 2) + 'px' 
+			})
+			xCoordicate = $('.internship-logo').css('left');
+			$('.logo-btn .x-coordinate-badge').text(+xCoordicate.slice(0, xCoordicate.length-2))
+		})
+
+		$('.logo-btn .right').click(() => {
+			var xCoordicate = $('.internship-logo').css('left');
+			
+			$('.internship-logo').css({
+				left: (+xCoordicate.slice(0, xCoordicate.length-2) + 2) + 'px' 
+			})
+			xCoordicate = $('.internship-logo').css('left');
+			$('.logo-btn .x-coordinate-badge').text(+xCoordicate.slice(0, xCoordicate.length-2))
+		})
+
+
+
+		// signature 
+
+
+		$('.upload-signature').click(()=>{
+			var element = document.createElement('img')
+			element.setAttribute('class', 'signature-logo')
+			element.setAttribute('src', 'signature.png')
+			document.querySelector('.appender').appendChild(element)
+			console.log(element)
+			$('.signature-logo').css({
+				position: 'absolute',
+				top: '300px',
+				left: '600px',
+				zIndex: '7',
+				width: '100px'
+			})	
+			$('.sign-logo-invisibles').removeClass('invisible')
+
+		})
+
+
+
+		//////sign - logo 
+
+
+
+
+		$('.sign-logo-btn .increase-size').click(() => {
+			console.log($('.signature-logo'))
+			var preWidth = $('.signature-logo').css('width');
+			console.log(preWidth)
+			$('.signature-logo').css({
+				width: (+preWidth.slice(0, preWidth.length-2)+ 2) + 'px' 
+			})
+			preWidth = $('.signature-logo').css('width');
+			$('.sign-logo-btn .font-size-badge').text(+preWidth.slice(0, preWidth.length-2))
+		})
+
+		$('.sign-logo-btn .decrease-size').click(() => {
+			var preWidth = $('.signature-logo').css('width');
+			console.log(preWidth)
+			$('.signature-logo').css({
+				width: (+preWidth.slice(0, preWidth.length-2) - 2) + 'px' 
+			})
+			preWidth = $('.signature-logo').css('width');
+			$('.sign-logo-btn .font-size-badge').text(+preWidth.slice(0, preWidth.length-2))
+		})
+
+
+
+		$('.sign-logo-btn .up').click(() => {
+			var yCoordicate = $('.signature-logo').css('top');
+			
+			$('.signature-logo').css({
+				top: (+yCoordicate.slice(0, yCoordicate.length-2) - 2) + 'px' 
+			})
+			yCoordicate = $('.signature-logo').css('top');
+			$('.sign-logo-btn .y-coordinate-badge').text(+yCoordicate.slice(0, yCoordicate.length-2))
+		})
+
+		$('.sign-logo-btn .down').click(() => {
+			var yCoordicate = $('.signature-logo').css('top');
+			
+			$('.signature-logo').css({
+				top: (+yCoordicate.slice(0, yCoordicate.length-2) + 2) + 'px' 
+			})
+			yCoordicate = $('.signature-logo').css('top');
+			$('.sign-logo-btn .y-coordinate-badge').text(+yCoordicate.slice(0, yCoordicate.length-2))
+		})
+
+		$('.sign-logo-btn .left').click(() => {
+			var xCoordicate = $('.signature-logo').css('left');
+			
+			$('.signature-logo').css({
+				left: (+xCoordicate.slice(0, xCoordicate.length-2) - 2) + 'px' 
+			})
+			xCoordicate = $('.signature-logo').css('left');
+			$('.sign-logo-btn .x-coordinate-badge').text(+xCoordicate.slice(0, xCoordicate.length-2))
+		})
+
+		$('.sign-logo-btn .right').click(() => {
+			var xCoordicate = $('.signature-logo').css('left');
+			
+			$('.signature-logo').css({
+				left: (+xCoordicate.slice(0, xCoordicate.length-2) + 2) + 'px' 
+			})
+			xCoordicate = $('.signature-logo').css('left');
+			$('.sign-logo-btn .x-coordinate-badge').text(+xCoordicate.slice(0, xCoordicate.length-2))
+		})
+
+
+
+
+
+	</script>
+</body>
+</html>
